@@ -18,17 +18,30 @@ Grâce à cette information, il nout faut donc calculer h x l où h = ordmax.
 
 Algorithme :
 
+hauteurMax;
+largeurMax;
 s = 0
 Pour i entre 0 et n - 1
-    Pour j entre i et n - 1
+    verif = vrai
+    Pour j entre i+1 et n - 1
         x = tab[i] et y = tab[j];
         l = tab[j].abs - tab[i].abs
         h = max(tab[i].ord, tab[j].ord);
-        Pour k entre i et j
-            Si tab[k].ord > h
-                h = tab[k].ord
-        fin Pour
-        Si s < l*h
+        Si (i+1<j)
+            z = hauteurMax
+            Pour k entre (i+1) et (j-1)                    
+                Si tab[k].ord > h
+                    Si tab[k].ord < z
+                        z = tab[k].ord
+                Sinon
+                    verif = faux
+                Fin si
+                h = z
+            fin Pour
+        Sinon
+            h = hauteurMax
+        Fin Si
+        Si s < l*h et verif est vrai
             s = l*h
     Fin Pour
 Fin Pour

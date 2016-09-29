@@ -1,0 +1,18 @@
+package ressources;
+
+import java.util.ArrayList;
+
+public class Rectangle {
+	
+	private ArrayList<Point> pointList;
+	private int hauteurMax;
+	private int largeurMax;
+	
+	public Rectangle(ArrayList<Point> pointList, int hauteurMax, int largeuxMax){
+		 
+		this.pointList = pointList;
+		this.hauteurMax = hauteurMax;
+		this.largeurMax = largeurMax;
+	}
+	
+}

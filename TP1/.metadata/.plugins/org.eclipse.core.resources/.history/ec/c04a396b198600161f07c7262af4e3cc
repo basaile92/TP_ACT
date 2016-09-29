@@ -1,0 +1,38 @@
+package ressources;
+
+import java.util.ArrayList;
+
+public class Rectangle {
+	
+	private ArrayList<Point> pointList;
+	private int hauteurMax;
+	private int largeurMax;
+	
+	public Rectangle(ArrayList<Point> pointList, int hauteurMax, int largeuxMax){
+		 
+		this.pointList = pointList;
+		this.hauteurMax = hauteurMax;
+		this.largeurMax = largeurMax;
+	}
+	
+	public int getBiggestAreaRectangle(){
+		boolean verif;
+		int area = 0;
+		Point x, y;
+		int h, l;
+		int n = pointList.size();
+		for(int i = 0; i < n; i++){
+			
+			for(int j = i + 1; j < n; j++){
+				
+				x = pointList.get(i);
+				y = pointList.get(j);
+				
+				
+			}
+		}
+		
+		return 0;
+	}
+	
+}
