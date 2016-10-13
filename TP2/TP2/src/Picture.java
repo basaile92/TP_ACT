@@ -46,7 +46,6 @@ public class Picture {
 			
 			tab[i] = this.weightCalculate(new Color(i));
 		}
-		
 		for(int i = 0; i < max-min; i++){
 			
 			res += (min + i) * tab[i]; 
@@ -75,15 +74,27 @@ public class Picture {
 		return res;
 		
 	}
-	
-	public int distanceImage(int min, int colorNbr)
+
+	//Complexité = O(n^k)
+	public int[] distanceImage(int colorNbr)
 	{
-		if(this.distanceMin(min, 256/colorNbr+min) == 0 || min >= colorNbr){
-			return 0;
-		}else
-		{
-			return this.distanceMin(min, 256/colorNbr+min) + (distanceImage(256/colorNbr+min, colorNbr));
+		int min = 0;
+		int max = 0;
+		int[] tab;
+		int distance_min = 9999;
+
+		tab[0] = 0;
+		for (int i = 1; i <= colorNbr; i++){
+			for (int j = min + 1; j < 256; j++){
+				if (distanceMin(min,j) < distance_min){
+					distance_min = distanceMin(min,j);
+					max = j;
+				}
+			}
+			min = max + 1;
+			tab[i] = max;
 		}
+		return tab;
 	}
 	
 	
