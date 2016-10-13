@@ -1,0 +1,22 @@
+
+public class Picture {
+
+	private Color[][] picture;
+	
+	public Picture(int height, int width){
+	
+		this.picture = new Color[height][width];
+	
+		
+	}
+	
+	public void setColor(Color color, int x, int y){
+		
+		this.picture[x][y]= color;
+	}
+	
+	
+	public void meilleurGris(){
+
+	}
+}

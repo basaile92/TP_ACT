@@ -17,10 +17,14 @@ public class Main {
 		pointList.add(new Point(20,1));
 		Rectangle rectangle = new Rectangle(pointList, 20, 25);
 		
-		System.out.println("Surface du rectangle: " + rectangle.getBiggestAreaRectangle());
-		System.out.println("Surface du rectangle en dichotomie: " + rectangle.getBiggestAreaRectangleRec());
+		System.out.println("Nombre de points: " + rectangle.getNumberOfPoint());
+		System.out.println("Surface du rectangle (getBiggestAreaRectangle()): " + rectangle.getBiggestAreaRectangle());
+		rectangle.printNbrCmpAndSetToZ();
 
-	
+		System.out.println("Surface du rectangle (getBiggestAreaRectangle2()): " + rectangle.getBiggestAreaRectangle2());
+		rectangle.printNbrCmpAndSetToZ();
+		System.out.println("Surface du rectangle (getBiggestAreaRectangleRec()): " + rectangle.getBiggestAreaRectangleRec());
+		rectangle.printNbrCmpAndSetToZ();
 	}
 
 }

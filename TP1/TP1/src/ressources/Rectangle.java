@@ -8,6 +8,8 @@ public class Rectangle {
 	private ArrayList<Point> pointList;
 	private int hauteurMax;
 	private int largeurMax;
+	private static int cmpNbr = 0;
+
 	
 	public Rectangle(ArrayList<Point> pointList, int hauteurMax, int largeurMax){
 		 
@@ -33,6 +35,18 @@ public class Rectangle {
 		this.pointList.add(this.pointList.size(), new Point(this.largeurMax, 0));
 	}
 	
+	public int getNumberOfPoint(){
+		
+		return this.pointList.size()-2;
+	}
+	
+	public void printNbrCmpAndSetToZ(){
+		
+		System.out.println("Nombre de comparaisons:" + cmpNbr);
+		cmpNbr = 0;
+
+	}
+	
 	public int getBiggestAreaRectangle(){
 		boolean verif;
 		int area = 0;
@@ -52,9 +66,11 @@ public class Rectangle {
 					{
 						
 						if(pointList.get(k).getY() > h){
+							cmpNbr++;
 							if(pointList.get(k).getY() < z){
 								
 								z = pointList.get(k).getY();
+								cmpNbr++;
 							}
 						}else
 							verif = false;
@@ -68,6 +84,7 @@ public class Rectangle {
 				if( area < l * h && verif){
 					
 					area = l * h;
+					cmpNbr++;
 				}
 			}
 		}
@@ -75,13 +92,38 @@ public class Rectangle {
 		return area;
 	}
 	
+	public int getBiggestAreaRectangle2(){
+		int area = 0;
+		int h, l;
+		int n = pointList.size();
+		for(int i = 0; i < n - 1; i++){
+			
+			for(int j = i + 1; j < n; j++){
+				
+				l = pointList.get(j).getX()-pointList.get(i).getX();
+				h = this.hauteurMax;
+				for(int k = i + 1; k < j; k++)
+				{
+					if(pointList.get(k).getY()<h){	
+						h = pointList.get(k).getY();
+						cmpNbr++;
+					}
+				}
+				if( area < l * h){
+					
+					area = l * h;
+					cmpNbr++;
+				}
+			}
+		}
+		return area;
+	}
+	
 	public int getBiggestAreaRectangleRec(){
-		
 		return auxGetBiggestAreaRectangleRec(0, this.pointList.size()-1);
 	}
 	
 	private int auxGetBiggestAreaRectangleRec(int beginX, int endX){
-				
 		if(beginX == endX-1){
 			
 			return (this.hauteurMax * (this.pointList.get(endX).getX() - this.pointList.get(beginX).getX()));
@@ -96,10 +138,12 @@ public class Rectangle {
 					
 					lowestY = this.pointList.get(i).getY();
 					xOfLowestY = i;
+					cmpNbr++;
 				}
 			}
 			
 			area = (this.pointList.get(endX).getX() - this.pointList.get(beginX).getX()) * lowestY;
+			cmpNbr++;
 			return (biggest(auxGetBiggestAreaRectangleRec(beginX, xOfLowestY), auxGetBiggestAreaRectangleRec(xOfLowestY, endX), area));
 			
 		}

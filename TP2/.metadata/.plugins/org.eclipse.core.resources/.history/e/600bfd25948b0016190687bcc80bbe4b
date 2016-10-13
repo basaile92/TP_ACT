@@ -1,0 +1,13 @@
+
+public class ColorReduction {
+
+	public static void main (String[] args){
+
+		Picture exemple = new Picture(5,5);
+	
+	}
+		
+		
+		
+	
+}

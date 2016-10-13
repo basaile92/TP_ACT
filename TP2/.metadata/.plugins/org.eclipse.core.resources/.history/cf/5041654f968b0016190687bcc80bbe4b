@@ -1,0 +1,48 @@
+
+public class Picture {
+
+	private int height;
+	private int width;
+	private Color[][] picture;
+	
+	public Picture(int height, int width){
+	
+		this.height = height;
+		this.width = width;
+		this.picture = new Color[height][width];
+		
+	}
+	
+	public void setColor(Color color, int x, int y){
+		
+		this.picture[x][y]= color;
+	}
+	
+	public Color[][] getPicture(){
+		
+		return this.picture;
+	}
+		
+	public int weightCalculate(Color color){
+		
+		int weight = 0;
+		for(int i = 0; i< this.height; i++){
+			for(int j = 0; j<this.width; j++){
+				
+				if(color.equals(this.picture[i][j])){
+					weight++;
+				}
+			}
+		}
+		return weight;
+	}
+	
+	public void meilleurGris(int min, int max){
+		
+		for(int i = min; i<= max; i++){
+			
+			
+			
+		}
+	}
+}

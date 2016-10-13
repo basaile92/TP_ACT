@@ -1,0 +1,15 @@
+
+public class Color {
+
+	public int gris;
+	
+	public Color(int gris){
+		
+		this.gris = gris;
+	}
+	
+	public intgetGris(){
+		
+		return this.gris;
+	}
+}

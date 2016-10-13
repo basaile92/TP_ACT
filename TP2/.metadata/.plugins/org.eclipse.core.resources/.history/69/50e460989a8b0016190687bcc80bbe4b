@@ -1,0 +1,90 @@
+
+public class Picture {
+
+	private int height;
+	private int width;
+	private Color[][] picture;
+	
+	public Picture(int height, int width){
+	
+		this.height = height;
+		this.width = width;
+		this.picture = new Color[height][width];
+		
+	}
+	
+	public void setColor(Color color, int x, int y){
+		
+		this.picture[x][y]= color;
+	}
+	
+	public Color[][] getPicture(){
+		
+		return this.picture;
+	}
+		
+	public int weightCalculate(Color color){
+		
+		int weight = 0;
+		for(int i = 0; i< this.height; i++){
+			for(int j = 0; j<this.width; j++){
+				
+				if(color.equals(this.picture[i][j])){
+					weight++;
+				}
+			}
+		}
+		return weight;
+	}
+	
+	public int meilleurGris(int min, int max){
+		
+		int res = 0;
+		int totalWeight = 0;
+		int[] tab = new int[max-min];
+		for(int i = 0; i< max-min; i++){
+			
+			tab[i] = this.weightCalculate(new Color(i));
+		}
+		
+		for(int i = 0; i < max-min; i++){
+			
+			res += (min + i) * tab[i]; 
+			totalWeight += tab[i];
+		}
+		
+		return res/totalWeight;
+	}
+	
+	public int distanceMin(int min, int max){
+		
+		int res = 0;
+		int[] tab = new int[max-min];
+		int meilleurGris = this.meilleurGris(min, max);
+		for(int i = 0; i<this.height; i++){
+			
+			for(int j = 0; j< this.height; j++)
+			{
+				if(this.picture[i][j].getGris()<max && this.picture[i][j].getGris()>=min)
+				{
+					res += ((this.picture[i][j].getGris() - meilleurGris) * (this.picture[i][j].getGris() - meilleurGris)) * this.weightCalculate(this.picture[i][j]);
+				}	
+			}
+		}
+		
+		return res;
+		
+	}
+	
+	public int distanceImage(int min, int colorNbr)
+	{
+		if(this.distanceMin(min, 256/colorNbr+min) == 0 && min >= colorNbr){
+			return 0;
+		}else
+		{
+			return this.distanceMin(min, 256/colorNbr+min) + (distanceImage(256/colorNbr+min, colorNbr));
+		}
+	}
+	
+	
+}

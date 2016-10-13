@@ -1,0 +1,49 @@
+
+public class Picture {
+
+	private Color[][] picture;
+	
+	public Picture(int height, int width){
+	
+		this.picture = new Color[height][width];
+	
+		
+	}
+	
+	public void setColor(Color color, int x, int y){
+		
+		this.picture[x][y]= color;
+	}
+	
+	public void createExamplePicture(){
+		
+		Picture exemple = new Picture(5,5);
+		for(int i = 0; i<5; i++){
+			
+			exemple.setColor(new Color(0), i, 0);
+		}
+		for(int i = 0; i<5; i++){
+			
+			exemple.setColor(new Color(20), i, 1);
+		}
+		exemple.setColor(new Color(100), 0, 2);
+		exemple.setColor(new Color(132), 1, 2);
+		exemple.setColor(new Color(164), 2, 2);
+		exemple.setColor(new Color(164), 3, 2);
+		exemple.setColor(new Color(180), 4, 2);
+
+		for(int i = 0; i<5; i++){
+			
+			exemple.setColor(new Color(255), i, 3);
+			exemple.setColor(new Color(255), i, 4);
+
+		}
+		this = exemple;
+
+	}
+
+	
+	public void meilleurGris(){
+
+	}
+}

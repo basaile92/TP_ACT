@@ -1,0 +1,13 @@
+
+public class Color {
+
+	
+	public int poids;
+	public int gris;
+	
+	public Color(int poids, int gris){
+		
+		this.poids = poids;
+		this.gris = gris;
+	}
+}

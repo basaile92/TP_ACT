@@ -1,0 +1,17 @@
+
+public class ColorReduction {
+
+	public static void main (String[] args){
+
+		Picture exemple;
+		exemple.createExamplePicture();
+		
+		
+	}
+	
+	
+		
+		
+		
+	
+}

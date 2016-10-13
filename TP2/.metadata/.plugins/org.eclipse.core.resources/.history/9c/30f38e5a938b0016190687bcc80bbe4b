@@ -1,0 +1,12 @@
+
+public class Picture {
+
+	private Color[][] picture;
+	
+	public Picture(int height, int width){
+	
+		this.picture = new Color[height][width];
+	}
+	
+	
+}

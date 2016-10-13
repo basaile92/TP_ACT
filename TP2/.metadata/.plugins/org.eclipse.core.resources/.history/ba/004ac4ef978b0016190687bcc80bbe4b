@@ -1,0 +1,10 @@
+
+public class Color {
+
+	public int gris;
+	
+	public Color(int gris){
+		
+		this.gris = gris;
+	}
+}
