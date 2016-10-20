@@ -37,7 +37,7 @@ public class Picture {
 		return weight;
 	}
 	
-	public int meilleurGris(int min, int max){
+	public Color meilleurGris(int min, int max){
 		
 		int res = 0;
 		int totalWeight = 0;
@@ -52,13 +52,12 @@ public class Picture {
 			totalWeight += tab[i];
 		}
 		
-		return res/totalWeight;
+		return new Color(res/totalWeight);
 	}
 	
 	public int distanceMin(int min, int max){
 		
 		int res = 0;
-		int[] tab = new int[max-min];
 		int meilleurGris = this.meilleurGris(min, max);
 		for(int i = 0; i<this.height; i++){
 			
@@ -80,7 +79,11 @@ public class Picture {
 	{
 		int min = 0;
 		int max = 0;
+<<<<<<< HEAD
+		int[] tab = new int[colorNbr + 1];
+=======
 		int[] tab;
+>>>>>>> c5d67bc6d382d4777801203db522f302fb8a74fc
 		int distance_min = 9999;
 
 		tab[0] = 0;
@@ -93,8 +96,49 @@ public class Picture {
 			}
 			min = max + 1;
 			tab[i] = max;
+<<<<<<< HEAD
 		}
 		return tab;
+	}
+	
+	public Couple[] intervalles(int colorNbr){
+		int[] tab = distanceImage(colorNbr);
+		Couple[] inter = new Couple[colorNbr];
+		for (int i = 0; i < colorNbr-1; i++){
+			if (i == 0)
+				inter[i].setX(tab[i]);
+			else
+				inter[i].setX(tab[i] + 1);
+			inter[i].setY(tab[i+1]);
+		}
+		return inter;
+	}
+	
+	public Picture fusionnerIntervalle(int colorNbr){
+		Picture pixels = new Picture(this.height, this.width);
+		
+		Couple[] intervalles = this.intervalles(colorNbr);
+		Color[] gris = new Color[colorNbr];
+		
+		for (int k = 0; k < colorNbr; k++){
+			gris[k] = pixels.meilleurGris(intervalles[k].getX(), intervalles[k].getY());
+		}
+		
+		for (int i = 0; i < this.height; i++){
+			for (int j = 0; j < this.width; i++){
+				int c = 0;
+				while (this.picture[i][j].getGris() < intervalles[c].getY()){
+					c++;
+				}
+				pixels.getPicture()[i][j] = gris[c];
+			}
+		}
+		
+		return pixels;
+=======
+		}
+		return tab;
+>>>>>>> c5d67bc6d382d4777801203db522f302fb8a74fc
 	}
 	
 	

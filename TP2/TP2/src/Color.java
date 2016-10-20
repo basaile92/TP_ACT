@@ -12,4 +12,8 @@ public class Color {
 		
 		return this.gris;
 	}
+	
+	public void setGris(int gris){
+		this.gris = gris;
+	}
 }
